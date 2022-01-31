@@ -3,11 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "npm-run-all -s watch_relay next:dev",
+    "start": "npm-run-all -p watch_relay next:dev",
     "start:watch": "concurrently --kill-others --names \"yarn run watch_relay\" \"react-scripts start\"",
-    "relay": "relay-compiler --src ./graphql --schema ./schema/schema.graphql ",
+    "relay": "relay-compiler --src . --schema ./schema/schema.graphql ",
     "watch_relay": "npm-watch relay",
-    "start2": "yarn run relay && concurrently --kill-others --names \"react-scripts,relay\" \"react-scripts start\" \"yarn run relay --watch\"",
+    "start2": "pnpm relay && concurrently --kill-others --names \"pnpm run next:dev\" \"pnpm relay --watch\"",
     "next:dev": "next dev",
     "next:build": "next build",
     "next:start": "next start"
@@ -15,14 +15,14 @@
   "watch": {
     "relay": {
       "patterns": [
-        "./graphql"
+        "."
       ],
-      "extensions": "ts,tsx",
-      "ignore": "graphql/__generated__/*",
+      "extensions": "ts,tsx, graphql",
       "verbose": true
     }
   },
   "dependencies": {
+    "dotenv": "^14.3.2",
     "husky": "^3.0.9",
     "lint-staged": "^9.4.2",
     "next": "12.0.9",
@@ -32,7 +32,8 @@
     "react-dom": "17.0.2",
     "react-relay": "^13.0.1",
     "relay-compiler-language-typescript": "^15.0.0",
-    "relay-runtime": "^13.0.1"
+    "relay-runtime": "^13.0.1",
+    "sass": "^1.49.0"
   },
   "devDependencies": {
     "@babel/preset-react": "^7.16.7",

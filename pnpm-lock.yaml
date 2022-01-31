@@ -9,6 +9,7 @@ specifiers:
   autoprefixer: ^10.4.2
   babel-plugin-relay: ^13.0.2
   concurrently: ^5.0.0
+  dotenv: ^14.3.2
   eslint-plugin-prettier: ^3.1.1
   get-graphql-schema: ^2.1.2
   graphql: ^15.6.1
@@ -25,13 +26,15 @@ specifiers:
   relay-compiler: ^13.0.2
   relay-compiler-language-typescript: ^15.0.0
   relay-runtime: ^13.0.1
+  sass: ^1.49.0
   tailwindcss: ^3.0.18
   typescript: ^4.5.5
 
 dependencies:
+  dotenv: 14.3.2
   husky: 3.1.0
   lint-staged: 9.5.0
-  next: 12.0.9_react-dom@17.0.2+react@17.0.2
+  next: 12.0.9_8ea0df840a4126039579523f29859284
   npm-run-all: 4.1.5
   npm-watch: 0.11.0
   react: 17.0.2
@@ -39,6 +42,7 @@ dependencies:
   react-relay: 13.0.2_react@17.0.2
   relay-compiler-language-typescript: 15.0.0_c31273d9a5ebd18047bbb153fb4d1cf5
   relay-runtime: 13.0.2
+  sass: 1.49.0
 
 devDependencies:
   '@babel/preset-react': 7.16.7
@@ -949,6 +953,11 @@ packages:
       is-obj: 2.0.0
     dev: false
 
+  /dotenv/14.3.2:
+    resolution: {integrity: sha512-vwEppIphpFdvaMCaHfCEv9IgwcxMljMw2TnAQBB4VWPvzXQLTb82jwmdOKzlEVUL3gNFT4l4TPKO+Bn+sqcrVQ==}
+    engines: {node: '>=12'}
+    dev: false
+
   /duplexer3/0.1.4:
     resolution: {integrity: sha1-7gHdHKwO08vH/b6jfcCo8c4ALOI=}
     dev: false
@@ -1383,6 +1392,10 @@ packages:
   /ignore/5.2.0:
     resolution: {integrity: sha512-CmxgYGiEPCLhfLnpPp1MoRmifwEIOgjcHXxOBjv7mY96c+eWScsOP9c112ZyLdWHi0FxHjI+4uVhKYp/gcdRmQ==}
     engines: {node: '>= 4'}
+    dev: false
+
+  /immutable/4.0.0:
+    resolution: {integrity: sha512-zIE9hX70qew5qTUjSS7wi1iwj/l7+m54KWU247nhM3v806UdGj1yDndXj+IOYxxtW9zyLI+xqFNZjTuDaLUqFw==}
     dev: false
 
   /import-fresh/2.0.0:
@@ -1908,7 +1921,7 @@ packages:
     engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
     hasBin: true
 
-  /next/12.0.9_react-dom@17.0.2+react@17.0.2:
+  /next/12.0.9_8ea0df840a4126039579523f29859284:
     resolution: {integrity: sha512-omfYqoR/DvbdOIJ6SS1unKJ4mGIxUPs0RPa7wr/Mft22OCKgJhuG+aI9KFYi5ZJBwoFQk1vqaMKpWz5qr+dN0Q==}
     engines: {node: '>=12.22.0'}
     hasBin: true
@@ -1931,6 +1944,7 @@ packages:
       postcss: 8.4.5
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
+      sass: 1.49.0
       styled-jsx: 5.0.0_react@17.0.2
       use-subscription: 1.5.1_react@17.0.2
     optionalDependencies:
@@ -2579,6 +2593,16 @@ packages:
 
   /safe-buffer/5.2.1:
     resolution: {integrity: sha512-rp3So07KcdmmKbGvgaNxQSJr7bGVSVk5S9Eq1F+ppbRo70+YeaDxkw5Dd8NPN+GD6bjnYm2VuPuCXmpuYvmCXQ==}
+    dev: false
+
+  /sass/1.49.0:
+    resolution: {integrity: sha512-TVwVdNDj6p6b4QymJtNtRS2YtLJ/CqZriGg0eIAbAKMlN8Xy6kbv33FsEZSF7FufFFM705SQviHjjThfaQ4VNw==}
+    engines: {node: '>=8.9.0'}
+    hasBin: true
+    dependencies:
+      chokidar: 3.5.3
+      immutable: 4.0.0
+      source-map-js: 1.0.2
     dev: false
 
   /scheduler/0.20.2:

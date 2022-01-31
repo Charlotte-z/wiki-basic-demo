@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<d35b68633268343c22b208152138f374>>
+ * @generated SignedSource<<a800269ba6459e8e7b8c893ca2b17965>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -27,12 +27,12 @@ var v0 = [
   {
     "kind": "Literal",
     "name": "name",
-    "value": "relay"
+    "value": "ts-generic-magic"
   },
   {
     "kind": "Literal",
     "name": "owner",
-    "value": "facebook"
+    "value": "charlotte-z"
   }
 ],
 v1 = {
@@ -59,7 +59,7 @@ return {
         "selections": [
           (v1/*: any*/)
         ],
-        "storageKey": "repository(name:\"relay\",owner:\"facebook\")"
+        "storageKey": "repository(name:\"ts-generic-magic\",owner:\"charlotte-z\")"
       }
     ],
     "type": "Query",
@@ -88,21 +88,21 @@ return {
             "storageKey": null
           }
         ],
-        "storageKey": "repository(name:\"relay\",owner:\"facebook\")"
+        "storageKey": "repository(name:\"ts-generic-magic\",owner:\"charlotte-z\")"
       }
     ]
   },
   "params": {
-    "cacheID": "a17b364e6efb94ce9eec5b8f63a953fa",
+    "cacheID": "866c0f713604cec8c1cf947068a13ae9",
     "id": null,
     "metadata": {},
     "name": "RepositoryNameQuery",
     "operationKind": "query",
-    "text": "query RepositoryNameQuery {\n  repository(owner: \"facebook\", name: \"relay\") {\n    name\n    id\n  }\n}\n"
+    "text": "query RepositoryNameQuery {\n  repository(owner: \"charlotte-z\", name: \"ts-generic-magic\") {\n    name\n    id\n  }\n}\n"
   }
 };
 })();
 
-(node as any).hash = "ac48152241fe8e0011c1857edb3d414a";
+(node as any).hash = "2d166319e46b65c2e4a4c055ee11c036";
 
 export default node;
