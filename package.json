@@ -10,7 +10,8 @@
     "start2": "pnpm relay && concurrently --kill-others --names \"pnpm run next:dev\" \"pnpm relay --watch\"",
     "next:dev": "next dev",
     "next:build": "next build",
-    "next:start": "next start"
+    "next:start": "next start",
+    "lint": "next lint"
   },
   "watch": {
     "relay": {
@@ -23,17 +24,20 @@
   },
   "dependencies": {
     "dotenv": "^14.3.2",
+    "eslint": "^8.8.0",
+    "eslint-config-next": "^12.0.10",
     "husky": "^3.0.9",
     "lint-staged": "^9.4.2",
-    "next": "12.0.9",
+    "next": "12.0.10",
     "npm-run-all": "^4.1.5",
     "npm-watch": "^0.11.0",
-    "react": "17.0.2",
-    "react-dom": "17.0.2",
+    "react": "18.0.0-rc.0",
+    "react-dom": "18.0.0-rc.0",
     "react-relay": "^13.0.1",
     "relay-compiler-language-typescript": "^15.0.0",
     "relay-runtime": "^13.0.1",
-    "sass": "^1.49.0"
+    "sass": "^1.49.0",
+    "ts-generic-magic": "^0.0.3"
   },
   "devDependencies": {
     "@babel/preset-react": "^7.16.7",
@@ -47,10 +51,24 @@
     "eslint-plugin-prettier": "^3.1.1",
     "get-graphql-schema": "^2.1.2",
     "graphql": "^15.6.1",
+    "graphql-cli": "4.1.0",
     "postcss": "^8.4.5",
     "prettier": "^1.18.2",
     "relay-compiler": "^13.0.2",
     "tailwindcss": "^3.0.18",
     "typescript": "^4.5.5"
-  }
+  },
+  "description": "This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/zeit/next.js/tree/canary/packages/create-next-app).",
+  "main": "next.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Charlotte-z/nextjs-template.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Charlotte-z/nextjs-template/issues"
+  },
+  "homepage": "https://github.com/Charlotte-z/nextjs-template#readme"
 }

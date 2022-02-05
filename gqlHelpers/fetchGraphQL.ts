@@ -1,15 +1,12 @@
-
-// your-app-name/src/fetchGraphQL.js
 async function fetchGraphQL(text, variables) {
   const REACT_APP_GITHUB_AUTH_TOKEN = process.env.REACT_APP_GITHUB_AUTH_TOKEN;
-  const BACKEND_URL = process.env.BACKEND_URL
+  const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL;
 
-  // Fetch data from GitHub's GraphQL API:
-  const response = await fetch('https://api.github.com/graphql', {
-    method: "POST",
+  const response = await fetch(BACKEND_URL, {
+    method: 'POST',
     headers: {
-      Authorization: `bearer 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`,
-      "Content-Type": "application/json",
+      Authorization: `bearer ${REACT_APP_GITHUB_AUTH_TOKEN}`,
+      'Content-Type': 'application/json',
     },
     body: JSON.stringify({
       query: text,
@@ -17,7 +14,6 @@ async function fetchGraphQL(text, variables) {
     }),
   });
 
-  // Get the response as JSON
   return await response.json();
 }
 

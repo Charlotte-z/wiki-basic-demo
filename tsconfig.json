@@ -6,6 +6,27 @@
       "dom.iterable",
       "esnext"
     ],
+    "baseUrl": ".",
+    "paths": {
+      "@/gqlHelpers/*": [
+        "gqlHelpers/*"
+      ],
+      "@/graphql/*": [
+        "graphql/*"
+      ],
+      "@/common/*": [
+        "common/*"
+      ],
+      "@/pages/*": [
+        "pages/*"
+      ],
+      "@/schema/*": [
+        "schema/*"
+      ],
+      "@/*": [
+        "./*"
+      ],
+    },
     "allowJs": true,
     "skipLibCheck": true,
     "strict": false,
