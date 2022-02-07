@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<d3c2070eba91627f744fd3c8274f2328>>
+ * @generated SignedSource<<9a504426f16e5b7024be02b9c8a6da10>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -34,10 +34,10 @@ const node: ReaderFragment = {
       "storageKey": null
     }
   ],
-  "type": "Skills",
+  "type": "Skill",
   "abstractKey": null
 };
 
-(node as any).hash = "b61cf782b03abb8d1713ff702b08bc46";
+(node as any).hash = "8d9299b350c750d64a2b70a8d47242df";
 
 export default node;

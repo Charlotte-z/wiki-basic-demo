@@ -1,27 +1,38 @@
 import { useState } from 'react';
-import { useFragment } from 'react-relay';
+import { PreloadedQuery, useFragment, usePaginationFragment } from 'react-relay';
 
 import { AppTeamsFragment } from '@/graphql/teams/query/TeamsFragment';
-import { TeamsFragment$key } from '@/graphql/teams/query/__generated__/TeamsFragment.graphql';
+
+import type { TeamsFragment$key } from '@/graphql/teams/query/__generated__/TeamsFragment.graphql';
+import type { TeamsQuery } from '@/graphql/teams/query/__generated__/TeamsQuery.graphql';
 
 import Item from '../Item';
 import Header from '../Header';
+import { HeaderFragment$key } from '@/graphql/teams/query/__generated__/HeaderFragment.graphql';
+import { FragmentRefs } from 'relay-runtime';
+import { SkillsListPaginationQuery, SkillsListPaginationQuery$data } from '@/graphql/teams/query/__generated__/SkillsListPaginationQuery.graphql';
 
 type TodoProps = {
-  queryRef: TeamsFragment$key;
+  queryRef: {
+    readonly id: string;
+    readonly name: string;
+    readonly " $fragmentSpreads": FragmentRefs<"TeamsFragment" | "HeaderFragment">;
+  }
 };
 
 const Todo = (props: TodoProps) => {
-  const data = useFragment<TeamsFragment$key>(AppTeamsFragment, props.queryRef);
+  const data = usePaginationFragment<SkillsListPaginationQuery, TeamsFragment$key>(AppTeamsFragment, props.queryRef);
   const [pointer, setPointer] = useState(-1);
+
 
   return (
     <div className='w-full'>
       <Header queryRef={props.queryRef} />
       <h1 className='text-pink-400 flex-inline justify-center min-h-min-48 w-full'>
-        Member of geek team: {data?.name ?? ''} !
+        {/* Member of geek team: {data?.data.name ?? ''} ! */}
+        <div onClick={() => {data.loadNext(1)}}>test</div>
         <div>
-          {data?.skills
+          {data?.data.skillConnection.edges
             ?.filter((skill) => skill) // it's not grace to filter null values
             .map((skill, index) => (
               <div
@@ -29,9 +40,9 @@ const Todo = (props: TodoProps) => {
                 onMouseEnter={() => setPointer(index)}
                 className='hover:bg-pink-200 rounded-md flex justify-items-center'>
                 <Item
-                  queryRef={skill}
-                  member={data.name}
-                  memberId={data.id}
+                  queryRef={skill.node}
+                  member={'data.data.name'}
+                  memberId={data.data.id}
                   hoverNow={index === pointer}
                 />
               </div>

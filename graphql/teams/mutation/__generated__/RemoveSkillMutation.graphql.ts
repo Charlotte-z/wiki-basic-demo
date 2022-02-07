@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<97e5eaa23a564f8d92d7443c4fc6bb69>>
+ * @generated SignedSource<<0774592bbee402a763af3c2550d6b885>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -75,7 +75,7 @@ return {
       {
         "alias": null,
         "args": (v1/*: any*/),
-        "concreteType": "Skills",
+        "concreteType": "Skill",
         "kind": "LinkedField",
         "name": "removeSkill",
         "plural": false,
@@ -98,7 +98,7 @@ return {
       {
         "alias": null,
         "args": (v1/*: any*/),
-        "concreteType": "Skills",
+        "concreteType": "Skill",
         "kind": "LinkedField",
         "name": "removeSkill",
         "plural": false,

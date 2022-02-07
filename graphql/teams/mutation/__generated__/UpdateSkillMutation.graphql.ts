@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<adc102e353d81db8b8f98b56cf16011c>>
+ * @generated SignedSource<<ac5588c46d7ac23573c89078138bb7e2>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -65,7 +65,7 @@ v1 = [
         "variableName": "update"
       }
     ],
-    "concreteType": "Skills",
+    "concreteType": "Skill",
     "kind": "LinkedField",
     "name": "updateSkill",
     "plural": false,

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useFragment } from 'react-relay';
+import { ConnectionHandler, useFragment } from 'react-relay';
 
 import { mutate } from '@/gqlHelpers/mutate';
 import { AddSkill } from '@/graphql/teams/mutation/AddSkillMutation';
@@ -34,12 +34,18 @@ const Header = ({ queryRef }: HeaderProps) => {
                 memberName: data.name,
                 skill: value,
               },
-              updater: (store, payload) => {
-                const memberId = store.get(data.id);
-                const skills = memberId.getLinkedRecords('skills');
-                const addSkill = store.getRootField('addSkill');
+              updater: (store) => {
+                const member = store.get(data.id);
+                const payload = store
+                  .getRootField('addSkill')
+                  .getLinkedRecord('edge');
 
-                memberId.setLinkedRecords([...skills, addSkill], 'skills');
+                const conn = ConnectionHandler.getConnection(
+                  member,
+                  'teams__skillConnection',
+                );
+
+                ConnectionHandler.insertEdgeBefore(conn, payload);
               },
             });
           }

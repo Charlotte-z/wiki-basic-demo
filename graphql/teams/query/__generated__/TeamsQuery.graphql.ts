@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<0c4668ef0ec4607715f8eaa46c6f4e5b>>
+ * @generated SignedSource<<f744c54aec4686e5e8bb7ec2fb893d94>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -10,7 +10,10 @@
 
 import { ConcreteRequest, Query } from 'relay-runtime';
 import { FragmentRefs } from "relay-runtime";
-export type TeamsQuery$variables = {};
+export type TeamsQuery$variables = {
+  first?: number | null;
+  after?: string | null;
+};
 export type TeamsQueryVariables = TeamsQuery$variables;
 export type TeamsQuery$data = {
   readonly Teams: ReadonlyArray<{
@@ -27,22 +30,47 @@ export type TeamsQuery = {
 
 const node: ConcreteRequest = (function(){
 var v0 = {
+  "defaultValue": null,
+  "kind": "LocalArgument",
+  "name": "after"
+},
+v1 = {
+  "defaultValue": null,
+  "kind": "LocalArgument",
+  "name": "first"
+},
+v2 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
   "name": "id",
   "storageKey": null
 },
-v1 = {
+v3 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
   "name": "name",
   "storageKey": null
-};
+},
+v4 = [
+  {
+    "kind": "Variable",
+    "name": "after",
+    "variableName": "after"
+  },
+  {
+    "kind": "Variable",
+    "name": "first",
+    "variableName": "first"
+  }
+];
 return {
   "fragment": {
-    "argumentDefinitions": [],
+    "argumentDefinitions": [
+      (v0/*: any*/),
+      (v1/*: any*/)
+    ],
     "kind": "Fragment",
     "metadata": null,
     "name": "TeamsQuery",
@@ -55,8 +83,8 @@ return {
         "name": "Teams",
         "plural": true,
         "selections": [
-          (v0/*: any*/),
-          (v1/*: any*/),
+          (v2/*: any*/),
+          (v3/*: any*/),
           {
             "args": null,
             "kind": "FragmentSpread",
@@ -76,7 +104,10 @@ return {
   },
   "kind": "Request",
   "operation": {
-    "argumentDefinitions": [],
+    "argumentDefinitions": [
+      (v1/*: any*/),
+      (v0/*: any*/)
+    ],
     "kind": "Operation",
     "name": "TeamsQuery",
     "selections": [
@@ -88,20 +119,104 @@ return {
         "name": "Teams",
         "plural": true,
         "selections": [
-          (v0/*: any*/),
-          (v1/*: any*/),
+          (v2/*: any*/),
+          (v3/*: any*/),
           {
             "alias": null,
-            "args": null,
+            "args": (v4/*: any*/),
             "concreteType": "Skills",
             "kind": "LinkedField",
-            "name": "skills",
-            "plural": true,
+            "name": "skillConnection",
+            "plural": false,
             "selections": [
-              (v1/*: any*/),
-              (v0/*: any*/)
+              {
+                "alias": null,
+                "args": null,
+                "concreteType": "SkillEdge",
+                "kind": "LinkedField",
+                "name": "edges",
+                "plural": true,
+                "selections": [
+                  {
+                    "alias": null,
+                    "args": null,
+                    "kind": "ScalarField",
+                    "name": "cursor",
+                    "storageKey": null
+                  },
+                  {
+                    "alias": null,
+                    "args": null,
+                    "concreteType": "Skill",
+                    "kind": "LinkedField",
+                    "name": "node",
+                    "plural": false,
+                    "selections": [
+                      (v3/*: any*/),
+                      (v2/*: any*/),
+                      {
+                        "alias": null,
+                        "args": null,
+                        "kind": "ScalarField",
+                        "name": "__typename",
+                        "storageKey": null
+                      }
+                    ],
+                    "storageKey": null
+                  }
+                ],
+                "storageKey": null
+              },
+              {
+                "alias": null,
+                "args": null,
+                "concreteType": "PageInfo",
+                "kind": "LinkedField",
+                "name": "pageInfo",
+                "plural": false,
+                "selections": [
+                  {
+                    "alias": null,
+                    "args": null,
+                    "kind": "ScalarField",
+                    "name": "hasNextPage",
+                    "storageKey": null
+                  },
+                  {
+                    "alias": null,
+                    "args": null,
+                    "kind": "ScalarField",
+                    "name": "hasPreviousPage",
+                    "storageKey": null
+                  },
+                  {
+                    "alias": null,
+                    "args": null,
+                    "kind": "ScalarField",
+                    "name": "startCursor",
+                    "storageKey": null
+                  },
+                  {
+                    "alias": null,
+                    "args": null,
+                    "kind": "ScalarField",
+                    "name": "endCursor",
+                    "storageKey": null
+                  }
+                ],
+                "storageKey": null
+              }
             ],
             "storageKey": null
+          },
+          {
+            "alias": null,
+            "args": (v4/*: any*/),
+            "filters": null,
+            "handle": "connection",
+            "key": "teams__skillConnection",
+            "kind": "LinkedHandle",
+            "name": "skillConnection"
           }
         ],
         "storageKey": null
@@ -109,16 +224,16 @@ return {
     ]
   },
   "params": {
-    "cacheID": "27871e5782cf09754cf6ab70080b7a69",
+    "cacheID": "57f2a217efce3516678868f623d77f7b",
     "id": null,
     "metadata": {},
     "name": "TeamsQuery",
     "operationKind": "query",
-    "text": "query TeamsQuery {\n  Teams {\n    id\n    name\n    ...TeamsFragment\n    ...HeaderFragment\n  }\n}\n\nfragment HeaderFragment on ReactTeam {\n  id\n  name\n}\n\nfragment ItemFragment on Skills {\n  name\n}\n\nfragment TeamsFragment on ReactTeam {\n  id\n  name\n  skills {\n    name\n    ...ItemFragment\n    id\n  }\n}\n"
+    "text": "query TeamsQuery(\n  $first: Int\n  $after: String\n) {\n  Teams {\n    id\n    name\n    ...TeamsFragment\n    ...HeaderFragment\n  }\n}\n\nfragment HeaderFragment on ReactTeam {\n  id\n  name\n}\n\nfragment ItemFragment on Skill {\n  name\n}\n\nfragment TeamsFragment on ReactTeam {\n  skillConnection(first: $first, after: $after) {\n    edges {\n      cursor\n      node {\n        name\n        ...ItemFragment\n        id\n        __typename\n      }\n    }\n    pageInfo {\n      hasNextPage\n      hasPreviousPage\n      startCursor\n      endCursor\n    }\n  }\n  id\n}\n"
   }
 };
 })();
 
-(node as any).hash = "d20ef76ee6a103dcda516b8275d77964";
+(node as any).hash = "e220e18eb2ccf6f2a2695b44f110e0a2";
 
 export default node;
