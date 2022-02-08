@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<9c26388246d18b161afcd73817818ca2>>
+ * @generated SignedSource<<bc47f05fda208eaa7384902d6fab6faf>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -11,15 +11,15 @@
 import { ConcreteRequest, Query } from 'relay-runtime';
 import { FragmentRefs } from "relay-runtime";
 export type SkillsListPaginationQuery$variables = {
-  after?: string | null;
-  first?: number | null;
+  limit?: number | null;
+  pageSize?: number | null;
   id: string;
 };
 export type SkillsListPaginationQueryVariables = SkillsListPaginationQuery$variables;
 export type SkillsListPaginationQuery$data = {
   readonly node: {
     readonly " $fragmentSpreads": FragmentRefs<"TeamsFragment">;
-  } | null;
+  };
 };
 export type SkillsListPaginationQueryResponse = SkillsListPaginationQuery$data;
 export type SkillsListPaginationQuery = {
@@ -28,73 +28,75 @@ export type SkillsListPaginationQuery = {
 };
 
 const node: ConcreteRequest = (function(){
-var v0 = [
-  {
-    "defaultValue": null,
-    "kind": "LocalArgument",
-    "name": "after"
-  },
-  {
-    "defaultValue": null,
-    "kind": "LocalArgument",
-    "name": "first"
-  },
-  {
-    "defaultValue": null,
-    "kind": "LocalArgument",
-    "name": "id"
-  }
-],
-v1 = [
+var v0 = {
+  "defaultValue": null,
+  "kind": "LocalArgument",
+  "name": "id"
+},
+v1 = {
+  "defaultValue": 1,
+  "kind": "LocalArgument",
+  "name": "limit"
+},
+v2 = {
+  "defaultValue": 1,
+  "kind": "LocalArgument",
+  "name": "pageSize"
+},
+v3 = [
   {
     "kind": "Variable",
     "name": "id",
     "variableName": "id"
   }
 ],
-v2 = {
-  "alias": null,
-  "args": null,
-  "kind": "ScalarField",
-  "name": "__typename",
-  "storageKey": null
-},
-v3 = {
+v4 = [
+  {
+    "kind": "Variable",
+    "name": "limit",
+    "variableName": "limit"
+  },
+  {
+    "kind": "Variable",
+    "name": "pageSize",
+    "variableName": "pageSize"
+  }
+],
+v5 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
   "name": "id",
   "storageKey": null
 },
-v4 = [
-  {
-    "kind": "Variable",
-    "name": "after",
-    "variableName": "after"
-  },
-  {
-    "kind": "Variable",
-    "name": "first",
-    "variableName": "first"
-  }
-];
+v6 = {
+  "alias": null,
+  "args": null,
+  "kind": "ScalarField",
+  "name": "name",
+  "storageKey": null
+};
 return {
   "fragment": {
-    "argumentDefinitions": (v0/*: any*/),
+    "argumentDefinitions": [
+      (v0/*: any*/),
+      (v1/*: any*/),
+      (v2/*: any*/)
+    ],
     "kind": "Fragment",
     "metadata": null,
     "name": "SkillsListPaginationQuery",
     "selections": [
       {
         "alias": null,
-        "args": (v1/*: any*/),
+        "args": (v3/*: any*/),
         "concreteType": null,
         "kind": "LinkedField",
         "name": "node",
         "plural": false,
         "selections": [
           {
-            "args": null,
+            "args": (v4/*: any*/),
             "kind": "FragmentSpread",
             "name": "TeamsFragment"
           }
@@ -107,119 +109,46 @@ return {
   },
   "kind": "Request",
   "operation": {
-    "argumentDefinitions": (v0/*: any*/),
+    "argumentDefinitions": [
+      (v1/*: any*/),
+      (v2/*: any*/),
+      (v0/*: any*/)
+    ],
     "kind": "Operation",
     "name": "SkillsListPaginationQuery",
     "selections": [
       {
         "alias": null,
-        "args": (v1/*: any*/),
+        "args": (v3/*: any*/),
         "concreteType": null,
         "kind": "LinkedField",
         "name": "node",
         "plural": false,
         "selections": [
-          (v2/*: any*/),
-          (v3/*: any*/),
+          {
+            "alias": null,
+            "args": null,
+            "kind": "ScalarField",
+            "name": "__typename",
+            "storageKey": null
+          },
+          (v5/*: any*/),
           {
             "kind": "InlineFragment",
             "selections": [
+              (v6/*: any*/),
               {
                 "alias": null,
                 "args": (v4/*: any*/),
-                "concreteType": "Skills",
+                "concreteType": "Skill",
                 "kind": "LinkedField",
-                "name": "skillConnection",
-                "plural": false,
+                "name": "skills",
+                "plural": true,
                 "selections": [
-                  {
-                    "alias": null,
-                    "args": null,
-                    "concreteType": "SkillEdge",
-                    "kind": "LinkedField",
-                    "name": "edges",
-                    "plural": true,
-                    "selections": [
-                      {
-                        "alias": null,
-                        "args": null,
-                        "kind": "ScalarField",
-                        "name": "cursor",
-                        "storageKey": null
-                      },
-                      {
-                        "alias": null,
-                        "args": null,
-                        "concreteType": "Skill",
-                        "kind": "LinkedField",
-                        "name": "node",
-                        "plural": false,
-                        "selections": [
-                          {
-                            "alias": null,
-                            "args": null,
-                            "kind": "ScalarField",
-                            "name": "name",
-                            "storageKey": null
-                          },
-                          (v3/*: any*/),
-                          (v2/*: any*/)
-                        ],
-                        "storageKey": null
-                      }
-                    ],
-                    "storageKey": null
-                  },
-                  {
-                    "alias": null,
-                    "args": null,
-                    "concreteType": "PageInfo",
-                    "kind": "LinkedField",
-                    "name": "pageInfo",
-                    "plural": false,
-                    "selections": [
-                      {
-                        "alias": null,
-                        "args": null,
-                        "kind": "ScalarField",
-                        "name": "hasNextPage",
-                        "storageKey": null
-                      },
-                      {
-                        "alias": null,
-                        "args": null,
-                        "kind": "ScalarField",
-                        "name": "hasPreviousPage",
-                        "storageKey": null
-                      },
-                      {
-                        "alias": null,
-                        "args": null,
-                        "kind": "ScalarField",
-                        "name": "startCursor",
-                        "storageKey": null
-                      },
-                      {
-                        "alias": null,
-                        "args": null,
-                        "kind": "ScalarField",
-                        "name": "endCursor",
-                        "storageKey": null
-                      }
-                    ],
-                    "storageKey": null
-                  }
+                  (v6/*: any*/),
+                  (v5/*: any*/)
                 ],
                 "storageKey": null
-              },
-              {
-                "alias": null,
-                "args": (v4/*: any*/),
-                "filters": null,
-                "handle": "connection",
-                "key": "teams__skillConnection",
-                "kind": "LinkedHandle",
-                "name": "skillConnection"
               }
             ],
             "type": "ReactTeam",
@@ -231,16 +160,16 @@ return {
     ]
   },
   "params": {
-    "cacheID": "1e35abf52c5f42e21333574a37631fd7",
+    "cacheID": "31a2adfeba5ffdf12c465307f11fa98e",
     "id": null,
     "metadata": {},
     "name": "SkillsListPaginationQuery",
     "operationKind": "query",
-    "text": "query SkillsListPaginationQuery(\n  $after: String\n  $first: Int\n  $id: ID!\n) {\n  node(id: $id) {\n    __typename\n    ...TeamsFragment\n    id\n  }\n}\n\nfragment ItemFragment on Skill {\n  name\n}\n\nfragment TeamsFragment on ReactTeam {\n  skillConnection(first: $first, after: $after) {\n    edges {\n      cursor\n      node {\n        name\n        ...ItemFragment\n        id\n        __typename\n      }\n    }\n    pageInfo {\n      hasNextPage\n      hasPreviousPage\n      startCursor\n      endCursor\n    }\n  }\n  id\n}\n"
+    "text": "query SkillsListPaginationQuery(\n  $limit: Int = 1\n  $pageSize: Int = 1\n  $id: ID!\n) {\n  node(id: $id) {\n    __typename\n    ...TeamsFragment_4ppVkE\n    id\n  }\n}\n\nfragment ItemFragment on Skill {\n  name\n}\n\nfragment TeamsFragment_4ppVkE on ReactTeam {\n  id\n  name\n  skills(pageSize: $pageSize, limit: $limit) {\n    name\n    ...ItemFragment\n    id\n  }\n}\n"
   }
 };
 })();
 
-(node as any).hash = "1439608b721187f12baef0fa2795a4d8";
+(node as any).hash = "690ee877c2bbfd40e6cd9b01eb766f11";
 
 export default node;

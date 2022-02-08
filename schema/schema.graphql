@@ -2,54 +2,25 @@ interface Node {
   id: ID!
 }
 
-type Skill {
+type Skill implements Node {
   id: ID!
   name: String!
-}
-
-type PageInfo {
-  hasNextPage: Boolean!
-  hasPreviousPage: Boolean!
-  startCursor: String
-  endCursor: String
-}
-
-type SkillEdge {
-  cursor: String!
-  node: Skill!
-}
-
-type Skills {
-  edges: [SkillEdge!]!
-  pageInfo: PageInfo!
-}
-
-type SkillResponseNode {
-  id: ID!
-  name: String!
-}
-
-type SkillResponseEdge {
-  node: SkillResponseNode!
-}
-
-type SkillResponse {
-  edge: SkillResponseEdge!
 }
 
 type ReactTeam implements Node {
   id: ID!
   name: String!
-  skillConnection(first: Int, after: String, before: String, last: Int): Skills!
+  resolveType: String!
+  skills(pageSize: Int, limit: Int): [Skill!]!
 }
 
 type Query {
   Teams: [ReactTeam]!
-  node(id: ID!): Node
+  node(id: ID!): Node!
 }
 
 type Mutation {
   removeSkill(memberName: String, skill: String): Skill!
-  addSkill(memberName: String, skill: String): SkillResponse!
+  addSkill(memberName: String, skill: String): Skill!
   updateSkill(memberName: String, skill: String, update: String): Skill!
 }

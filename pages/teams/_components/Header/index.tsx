@@ -36,16 +36,10 @@ const Header = ({ queryRef }: HeaderProps) => {
               },
               updater: (store) => {
                 const member = store.get(data.id);
-                const payload = store
-                  .getRootField('addSkill')
-                  .getLinkedRecord('edge');
-
-                const conn = ConnectionHandler.getConnection(
-                  member,
-                  'teams__skillConnection',
-                );
-
-                ConnectionHandler.insertEdgeBefore(conn, payload);
+                const payload = store.getRootField('addSkill');
+                const skills = member.getLinkedRecords('skills');
+                window.store = store;
+                member.setLinkedRecords([...skills, payload], 'skills');
               },
             });
           }

@@ -1,9 +1,10 @@
 import { useState } from 'react';
 import { PreloadedQuery, usePreloadedQuery } from 'react-relay';
 
-import Todo from '../_components/Todo';
 import { AppTeamsQuery } from '@/graphql/teams/query/TeamsQuery';
-import { TeamsQuery } from '@/graphql/teams/query/__generated__/TeamsQuery.graphql';
+import type { TeamsQuery } from '@/graphql/teams/query/__generated__/TeamsQuery.graphql';
+
+import Todo from '../_components/Todo';
 
 type TeamsProps = {
   preloadedQuery: PreloadedQuery<TeamsQuery, {}>;

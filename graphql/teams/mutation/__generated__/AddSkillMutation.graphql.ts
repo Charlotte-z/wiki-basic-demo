@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<49dc4b5e92006143c25b8c95418a7fd9>>
+ * @generated SignedSource<<4a824604499022f861d1d83bcc16133b>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -16,11 +16,7 @@ export type AddSkillMutation$variables = {
 export type AddSkillMutationVariables = AddSkillMutation$variables;
 export type AddSkillMutation$data = {
   readonly addSkill: {
-    readonly edge: {
-      readonly node: {
-        readonly name: string;
-      };
-    };
+    readonly name: string;
   };
 };
 export type AddSkillMutationResponse = AddSkillMutation$data;
@@ -71,34 +67,12 @@ return {
       {
         "alias": null,
         "args": (v1/*: any*/),
-        "concreteType": "SkillResponse",
+        "concreteType": "Skill",
         "kind": "LinkedField",
         "name": "addSkill",
         "plural": false,
         "selections": [
-          {
-            "alias": null,
-            "args": null,
-            "concreteType": "SkillResponseEdge",
-            "kind": "LinkedField",
-            "name": "edge",
-            "plural": false,
-            "selections": [
-              {
-                "alias": null,
-                "args": null,
-                "concreteType": "SkillResponseNode",
-                "kind": "LinkedField",
-                "name": "node",
-                "plural": false,
-                "selections": [
-                  (v2/*: any*/)
-                ],
-                "storageKey": null
-              }
-            ],
-            "storageKey": null
-          }
+          (v2/*: any*/)
         ],
         "storageKey": null
       }
@@ -115,39 +89,17 @@ return {
       {
         "alias": null,
         "args": (v1/*: any*/),
-        "concreteType": "SkillResponse",
+        "concreteType": "Skill",
         "kind": "LinkedField",
         "name": "addSkill",
         "plural": false,
         "selections": [
+          (v2/*: any*/),
           {
             "alias": null,
             "args": null,
-            "concreteType": "SkillResponseEdge",
-            "kind": "LinkedField",
-            "name": "edge",
-            "plural": false,
-            "selections": [
-              {
-                "alias": null,
-                "args": null,
-                "concreteType": "SkillResponseNode",
-                "kind": "LinkedField",
-                "name": "node",
-                "plural": false,
-                "selections": [
-                  (v2/*: any*/),
-                  {
-                    "alias": null,
-                    "args": null,
-                    "kind": "ScalarField",
-                    "name": "id",
-                    "storageKey": null
-                  }
-                ],
-                "storageKey": null
-              }
-            ],
+            "kind": "ScalarField",
+            "name": "id",
             "storageKey": null
           }
         ],
@@ -156,16 +108,16 @@ return {
     ]
   },
   "params": {
-    "cacheID": "e4c3233ef054c62c1c1db8dc26f64cb7",
+    "cacheID": "2cd97f10391bd61b9242318aa03e2a10",
     "id": null,
     "metadata": {},
     "name": "AddSkillMutation",
     "operationKind": "mutation",
-    "text": "mutation AddSkillMutation(\n  $memberName: String\n  $skill: String\n) {\n  addSkill(memberName: $memberName, skill: $skill) {\n    edge {\n      node {\n        name\n        id\n      }\n    }\n  }\n}\n"
+    "text": "mutation AddSkillMutation(\n  $memberName: String\n  $skill: String\n) {\n  addSkill(memberName: $memberName, skill: $skill) {\n    name\n    id\n  }\n}\n"
   }
 };
 })();
 
-(node as any).hash = "4cbf9e013dadb97cbe372219acfeee84";
+(node as any).hash = "67dc93fbbed2e8c07fdaddb08772561c";
 
 export default node;

@@ -4,13 +4,13 @@
   "private": true,
   "scripts": {
     "start": "npm-run-all -p watch_relay next:dev",
-    "start:watch": "concurrently --kill-others --names \"yarn run watch_relay\" \"react-scripts start\"",
+    "start:watch": "concurrently \"pnpm:next:*\"",
     "relay": "relay-compiler --src . --schema ./schema/schema.graphql ",
-    "watch_relay": "npm-watch relay",
+    "next:watch_relay": "npm-watch relay",
     "start2": "pnpm relay && concurrently --kill-others --names \"pnpm run next:dev\" \"pnpm relay --watch\"",
     "next:dev": "next dev",
-    "next:build": "next build",
-    "next:start": "next start",
+    "build": "next build",
+    "nextstart": "next start",
     "lint": "next lint"
   },
   "watch": {

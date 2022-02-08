@@ -1,16 +1,14 @@
 import { useState } from 'react';
-import { PreloadedQuery, useFragment, usePaginationFragment } from 'react-relay';
+import { FragmentRefs } from 'relay-runtime';
+import { useRefetchableFragment } from 'react-relay';
 
 import { AppTeamsFragment } from '@/graphql/teams/query/TeamsFragment';
 
+import type { SkillsListPaginationQuery } from '@/graphql/teams/query/__generated__/SkillsListPaginationQuery.graphql';
 import type { TeamsFragment$key } from '@/graphql/teams/query/__generated__/TeamsFragment.graphql';
-import type { TeamsQuery } from '@/graphql/teams/query/__generated__/TeamsQuery.graphql';
 
 import Item from '../Item';
 import Header from '../Header';
-import { HeaderFragment$key } from '@/graphql/teams/query/__generated__/HeaderFragment.graphql';
-import { FragmentRefs } from 'relay-runtime';
-import { SkillsListPaginationQuery, SkillsListPaginationQuery$data } from '@/graphql/teams/query/__generated__/SkillsListPaginationQuery.graphql';
 
 type TodoProps = {
   queryRef: {
@@ -21,7 +19,7 @@ type TodoProps = {
 };
 
 const Todo = (props: TodoProps) => {
-  const data = usePaginationFragment<SkillsListPaginationQuery, TeamsFragment$key>(AppTeamsFragment, props.queryRef);
+  const [data, refetch] = useRefetchableFragment<SkillsListPaginationQuery, TeamsFragment$key>(AppTeamsFragment, props.queryRef);
   const [pointer, setPointer] = useState(-1);
 
 
@@ -29,10 +27,14 @@ const Todo = (props: TodoProps) => {
     <div className='w-full'>
       <Header queryRef={props.queryRef} />
       <h1 className='text-pink-400 flex-inline justify-center min-h-min-48 w-full'>
-        {/* Member of geek team: {data?.data.name ?? ''} ! */}
-        <div onClick={() => {data.loadNext(1)}}>test</div>
+        Member of geek team: {data?.name ?? ''} !
+        <br />
+        <br />
+        <br />
+        <div onClick={() => {refetch({limit: 1, pageSize: 1})}}>previous</div>
+        <div onClick={() => {refetch({limit: 3, pageSize: 2})}}>next</div>
         <div>
-          {data?.data.skillConnection.edges
+          {data?.skills
             ?.filter((skill) => skill) // it's not grace to filter null values
             .map((skill, index) => (
               <div
@@ -40,9 +42,9 @@ const Todo = (props: TodoProps) => {
                 onMouseEnter={() => setPointer(index)}
                 className='hover:bg-pink-200 rounded-md flex justify-items-center'>
                 <Item
-                  queryRef={skill.node}
-                  member={'data.data.name'}
-                  memberId={data.data.id}
+                  queryRef={skill}
+                  member={data.name}
+                  memberId={data.id}
                   hoverNow={index === pointer}
                 />
               </div>

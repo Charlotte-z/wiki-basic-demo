@@ -72,7 +72,7 @@ const Item = (props: ItemProps) => {
           <span
             className={`${styles.name} cursor-pointer`}
             onClick={() => setEditing(true)}>
-            {data.name}
+            {data?.name}
           </span>
         )}
       </span>

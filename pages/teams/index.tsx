@@ -7,9 +7,11 @@ import { TeamsQuery } from '@/graphql/teams/query/__generated__/TeamsQuery.graph
 
 const Teams = lazy(() => import('./_views/Teams'));
 
-const preloadedQuery = loadQuery<TeamsQuery>(RelayEnvironment, AppTeamsQuery, {
-  first: 2,
-});
+const preloadedQuery = loadQuery<TeamsQuery>(
+  RelayEnvironment,
+  AppTeamsQuery,
+  {},
+);
 
 const App = () => {
   return (

@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<f744c54aec4686e5e8bb7ec2fb893d94>>
+ * @generated SignedSource<<2987106b95e284b6213d2c7116bafa8e>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -11,8 +11,8 @@
 import { ConcreteRequest, Query } from 'relay-runtime';
 import { FragmentRefs } from "relay-runtime";
 export type TeamsQuery$variables = {
-  first?: number | null;
-  after?: string | null;
+  pageSize?: number | null;
+  limit?: number | null;
 };
 export type TeamsQueryVariables = TeamsQuery$variables;
 export type TeamsQuery$data = {
@@ -32,12 +32,12 @@ const node: ConcreteRequest = (function(){
 var v0 = {
   "defaultValue": null,
   "kind": "LocalArgument",
-  "name": "after"
+  "name": "limit"
 },
 v1 = {
   "defaultValue": null,
   "kind": "LocalArgument",
-  "name": "first"
+  "name": "pageSize"
 },
 v2 = {
   "alias": null,
@@ -56,13 +56,13 @@ v3 = {
 v4 = [
   {
     "kind": "Variable",
-    "name": "after",
-    "variableName": "after"
+    "name": "limit",
+    "variableName": "limit"
   },
   {
     "kind": "Variable",
-    "name": "first",
-    "variableName": "first"
+    "name": "pageSize",
+    "variableName": "pageSize"
   }
 ];
 return {
@@ -86,7 +86,7 @@ return {
           (v2/*: any*/),
           (v3/*: any*/),
           {
-            "args": null,
+            "args": (v4/*: any*/),
             "kind": "FragmentSpread",
             "name": "TeamsFragment"
           },
@@ -124,99 +124,15 @@ return {
           {
             "alias": null,
             "args": (v4/*: any*/),
-            "concreteType": "Skills",
+            "concreteType": "Skill",
             "kind": "LinkedField",
-            "name": "skillConnection",
-            "plural": false,
+            "name": "skills",
+            "plural": true,
             "selections": [
-              {
-                "alias": null,
-                "args": null,
-                "concreteType": "SkillEdge",
-                "kind": "LinkedField",
-                "name": "edges",
-                "plural": true,
-                "selections": [
-                  {
-                    "alias": null,
-                    "args": null,
-                    "kind": "ScalarField",
-                    "name": "cursor",
-                    "storageKey": null
-                  },
-                  {
-                    "alias": null,
-                    "args": null,
-                    "concreteType": "Skill",
-                    "kind": "LinkedField",
-                    "name": "node",
-                    "plural": false,
-                    "selections": [
-                      (v3/*: any*/),
-                      (v2/*: any*/),
-                      {
-                        "alias": null,
-                        "args": null,
-                        "kind": "ScalarField",
-                        "name": "__typename",
-                        "storageKey": null
-                      }
-                    ],
-                    "storageKey": null
-                  }
-                ],
-                "storageKey": null
-              },
-              {
-                "alias": null,
-                "args": null,
-                "concreteType": "PageInfo",
-                "kind": "LinkedField",
-                "name": "pageInfo",
-                "plural": false,
-                "selections": [
-                  {
-                    "alias": null,
-                    "args": null,
-                    "kind": "ScalarField",
-                    "name": "hasNextPage",
-                    "storageKey": null
-                  },
-                  {
-                    "alias": null,
-                    "args": null,
-                    "kind": "ScalarField",
-                    "name": "hasPreviousPage",
-                    "storageKey": null
-                  },
-                  {
-                    "alias": null,
-                    "args": null,
-                    "kind": "ScalarField",
-                    "name": "startCursor",
-                    "storageKey": null
-                  },
-                  {
-                    "alias": null,
-                    "args": null,
-                    "kind": "ScalarField",
-                    "name": "endCursor",
-                    "storageKey": null
-                  }
-                ],
-                "storageKey": null
-              }
+              (v3/*: any*/),
+              (v2/*: any*/)
             ],
             "storageKey": null
-          },
-          {
-            "alias": null,
-            "args": (v4/*: any*/),
-            "filters": null,
-            "handle": "connection",
-            "key": "teams__skillConnection",
-            "kind": "LinkedHandle",
-            "name": "skillConnection"
           }
         ],
         "storageKey": null
@@ -224,16 +140,16 @@ return {
     ]
   },
   "params": {
-    "cacheID": "57f2a217efce3516678868f623d77f7b",
+    "cacheID": "85fb3d524305f5df34476e8799a15bd3",
     "id": null,
     "metadata": {},
     "name": "TeamsQuery",
     "operationKind": "query",
-    "text": "query TeamsQuery(\n  $first: Int\n  $after: String\n) {\n  Teams {\n    id\n    name\n    ...TeamsFragment\n    ...HeaderFragment\n  }\n}\n\nfragment HeaderFragment on ReactTeam {\n  id\n  name\n}\n\nfragment ItemFragment on Skill {\n  name\n}\n\nfragment TeamsFragment on ReactTeam {\n  skillConnection(first: $first, after: $after) {\n    edges {\n      cursor\n      node {\n        name\n        ...ItemFragment\n        id\n        __typename\n      }\n    }\n    pageInfo {\n      hasNextPage\n      hasPreviousPage\n      startCursor\n      endCursor\n    }\n  }\n  id\n}\n"
+    "text": "query TeamsQuery(\n  $pageSize: Int\n  $limit: Int\n) {\n  Teams {\n    id\n    name\n    ...TeamsFragment_4ppVkE\n    ...HeaderFragment\n  }\n}\n\nfragment HeaderFragment on ReactTeam {\n  id\n  name\n}\n\nfragment ItemFragment on Skill {\n  name\n}\n\nfragment TeamsFragment_4ppVkE on ReactTeam {\n  id\n  name\n  skills(pageSize: $pageSize, limit: $limit) {\n    name\n    ...ItemFragment\n    id\n  }\n}\n"
   }
 };
 })();
 
-(node as any).hash = "e220e18eb2ccf6f2a2695b44f110e0a2";
+(node as any).hash = "92072a1d5bbf9d8ec32cb17256d924d5";
 
 export default node;

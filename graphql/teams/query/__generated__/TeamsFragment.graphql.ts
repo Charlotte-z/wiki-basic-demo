@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<996a6877e2fe780efd34f21d7c7bb8f1>>
+ * @generated SignedSource<<1771032d2d306c009a45ecc12ec3f6e0>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -11,22 +11,12 @@
 import { ReaderFragment, RefetchableFragment } from 'relay-runtime';
 import { FragmentRefs } from "relay-runtime";
 export type TeamsFragment$data = {
-  readonly skillConnection: {
-    readonly edges: ReadonlyArray<{
-      readonly cursor: string;
-      readonly node: {
-        readonly name: string;
-        readonly " $fragmentSpreads": FragmentRefs<"ItemFragment">;
-      };
-    }>;
-    readonly pageInfo: {
-      readonly hasNextPage: boolean;
-      readonly hasPreviousPage: boolean;
-      readonly startCursor: string | null;
-      readonly endCursor: string | null;
-    };
-  };
   readonly id: string;
+  readonly name: string;
+  readonly skills: ReadonlyArray<{
+    readonly name: string;
+    readonly " $fragmentSpreads": FragmentRefs<"ItemFragment">;
+  }>;
   readonly " $fragmentType": "TeamsFragment";
 };
 export type TeamsFragment = TeamsFragment$data;
@@ -36,39 +26,30 @@ export type TeamsFragment$key = {
 };
 
 const node: ReaderFragment = (function(){
-var v0 = [
-  "skillConnection"
-];
+var v0 = {
+  "alias": null,
+  "args": null,
+  "kind": "ScalarField",
+  "name": "name",
+  "storageKey": null
+};
 return {
   "argumentDefinitions": [
     {
-      "kind": "RootArgument",
-      "name": "after"
+      "defaultValue": 1,
+      "kind": "LocalArgument",
+      "name": "limit"
     },
     {
-      "kind": "RootArgument",
-      "name": "first"
+      "defaultValue": 1,
+      "kind": "LocalArgument",
+      "name": "pageSize"
     }
   ],
   "kind": "Fragment",
   "metadata": {
-    "connection": [
-      {
-        "count": "first",
-        "cursor": "after",
-        "direction": "forward",
-        "path": (v0/*: any*/)
-      }
-    ],
     "refetch": {
-      "connection": {
-        "forward": {
-          "count": "first",
-          "cursor": "after"
-        },
-        "backward": null,
-        "path": (v0/*: any*/)
-      },
+      "connection": null,
       "fragmentPathInResult": [
         "node"
       ],
@@ -79,108 +60,39 @@ return {
   "name": "TeamsFragment",
   "selections": [
     {
-      "alias": "skillConnection",
-      "args": null,
-      "concreteType": "Skills",
-      "kind": "LinkedField",
-      "name": "__teams__skillConnection_connection",
-      "plural": false,
-      "selections": [
-        {
-          "alias": null,
-          "args": null,
-          "concreteType": "SkillEdge",
-          "kind": "LinkedField",
-          "name": "edges",
-          "plural": true,
-          "selections": [
-            {
-              "alias": null,
-              "args": null,
-              "kind": "ScalarField",
-              "name": "cursor",
-              "storageKey": null
-            },
-            {
-              "alias": null,
-              "args": null,
-              "concreteType": "Skill",
-              "kind": "LinkedField",
-              "name": "node",
-              "plural": false,
-              "selections": [
-                {
-                  "alias": null,
-                  "args": null,
-                  "kind": "ScalarField",
-                  "name": "name",
-                  "storageKey": null
-                },
-                {
-                  "args": null,
-                  "kind": "FragmentSpread",
-                  "name": "ItemFragment"
-                },
-                {
-                  "alias": null,
-                  "args": null,
-                  "kind": "ScalarField",
-                  "name": "__typename",
-                  "storageKey": null
-                }
-              ],
-              "storageKey": null
-            }
-          ],
-          "storageKey": null
-        },
-        {
-          "alias": null,
-          "args": null,
-          "concreteType": "PageInfo",
-          "kind": "LinkedField",
-          "name": "pageInfo",
-          "plural": false,
-          "selections": [
-            {
-              "alias": null,
-              "args": null,
-              "kind": "ScalarField",
-              "name": "hasNextPage",
-              "storageKey": null
-            },
-            {
-              "alias": null,
-              "args": null,
-              "kind": "ScalarField",
-              "name": "hasPreviousPage",
-              "storageKey": null
-            },
-            {
-              "alias": null,
-              "args": null,
-              "kind": "ScalarField",
-              "name": "startCursor",
-              "storageKey": null
-            },
-            {
-              "alias": null,
-              "args": null,
-              "kind": "ScalarField",
-              "name": "endCursor",
-              "storageKey": null
-            }
-          ],
-          "storageKey": null
-        }
-      ],
-      "storageKey": null
-    },
-    {
       "alias": null,
       "args": null,
       "kind": "ScalarField",
       "name": "id",
+      "storageKey": null
+    },
+    (v0/*: any*/),
+    {
+      "alias": null,
+      "args": [
+        {
+          "kind": "Variable",
+          "name": "limit",
+          "variableName": "limit"
+        },
+        {
+          "kind": "Variable",
+          "name": "pageSize",
+          "variableName": "pageSize"
+        }
+      ],
+      "concreteType": "Skill",
+      "kind": "LinkedField",
+      "name": "skills",
+      "plural": true,
+      "selections": [
+        (v0/*: any*/),
+        {
+          "args": null,
+          "kind": "FragmentSpread",
+          "name": "ItemFragment"
+        }
+      ],
       "storageKey": null
     }
   ],
@@ -189,6 +101,6 @@ return {
 };
 })();
 
-(node as any).hash = "1439608b721187f12baef0fa2795a4d8";
+(node as any).hash = "690ee877c2bbfd40e6cd9b01eb766f11";
 
 export default node;
